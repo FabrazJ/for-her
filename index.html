@@ -1,13 +1,29 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>To the Most Extraordinary Girl</title>
+
     <style>
         :root {
-            --bg-gradient: radial-gradient(circle at center, #360505 0%, #150202 60%, #080000 100%);
-            --card-gradient: linear-gradient(135deg, rgba(50, 4, 4, 0.9), rgba(18, 2, 2, 0.95));
+            --bg-gradient:
+                radial-gradient(
+                    circle at center,
+                    #360505 0%,
+                    #150202 60%,
+                    #080000 100%
+                );
+
+            --card-gradient:
+                linear-gradient(
+                    135deg,
+                    rgba(50, 4, 4, 0.92),
+                    rgba(18, 2, 2, 0.97)
+                );
+
             --primary-red: #ff3b3b;
             --accent-red: #e60000;
             --text-main: #f5f2f0;
@@ -16,170 +32,376 @@
             --signature-gold: #ffc170;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 20px;
-            font-family: 'Georgia', serif;
-            background: var(--bg-gradient);
-            color: var(--text-main);
+            min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
+
+            font-family: 'Georgia', serif;
+
+            background: var(--bg-gradient);
+            color: var(--text-main);
+
             overflow-x: hidden;
         }
 
-        body::before, body::after {
+        body::before,
+        body::after {
             content: '';
-            position: absolute;
+            position: fixed;
+
             width: 300px;
             height: 300px;
+
             border-radius: 50%;
+
             background: rgba(255, 0, 0, 0.05);
             filter: blur(80px);
+
             z-index: -1;
+            pointer-events: none;
         }
-        body::before { top: 10%; left: 15%; }
-        body::after { bottom: 10%; right: 15%; }
+
+        body::before {
+            top: 10%;
+            left: 15%;
+        }
+
+        body::after {
+            bottom: 10%;
+            right: 15%;
+        }
 
         .card {
             width: 100%;
-            max-width: 700px;
-            background: var(--card-gradient);
+            max-width: 720px;
+
             padding: 60px 50px;
+
+            background: var(--card-gradient);
+
             border: 1px solid rgba(255, 59, 59, 0.25);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 
-                        0 0 40px rgba(255, 0, 0, 0.08);
-            text-align: center;
             border-radius: 20px;
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(255, 0, 0, 0.08);
+
+            text-align: center;
+
             position: relative;
+
             backdrop-filter: blur(10px);
+
             animation: fadeIn 1.2s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card::before {
             content: '';
+
             position: absolute;
-            top: 0; left: 0; right: 0;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
             height: 4px;
-            background: linear-gradient(90deg, transparent, #ff4d4d, var(--gold-accent), #ff4d4d, transparent);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #ff4d4d,
+                    var(--gold-accent),
+                    #ff4d4d,
+                    transparent
+                );
+
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
         }
 
-        .heart-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .heart {
-            color: var(--primary-red);
-            font-size: 2.5em;
-            animation: pulse 2.5s infinite ease-in-out;
-            text-shadow: 0 0 15px rgba(255, 59, 59, 0.6);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(255,59,59,0.3)); }
-            50% { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(255,59,59,0.8)); }
-        }
-
         h1 {
-            color: #ff6666;
-            font-size: 2.8em;
             margin-top: 0;
-            margin-bottom: 25px;
-            letter-spacing: 1.8px;
+            margin-bottom: 35px;
+
+            color: #ff6666;
+
+            font-size: 2.8em;
             font-weight: normal;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+            letter-spacing: 1.8px;
+
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         p {
-            line-height: 2.1;
-            font-size: 1.2em;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+
             color: var(--text-muted);
+
+            font-size: 1.18em;
+            line-height: 2;
+
             text-wrap: pretty;
         }
 
-        .personal-note {
-            font-size: 1.25em;
+        .intro {
             color: var(--text-main);
-            font-weight: 500;
-            background: rgba(255,255,255,0.03);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid var(--gold-accent);
         }
 
         .doctor-mention {
             color: var(--gold-accent);
+
             font-weight: bold;
             font-style: italic;
-            text-shadow: 0 0 10px rgba(243, 213, 131, 0.3);
+
+            text-shadow:
+                0 0 10px rgba(243, 213, 131, 0.3);
+        }
+
+        .personal-note {
+            margin-top: 45px;
+
+            padding: 25px 25px 25px 28px;
+
+            color: var(--text-main);
+
+            font-size: 1.16em;
+            line-height: 2;
+
+            text-align: left;
+
+            background: rgba(255, 255, 255, 0.035);
+
+            border-left: 3px solid var(--gold-accent);
+            border-radius: 8px;
+
+            box-shadow:
+                inset 0 0 20px rgba(255, 255, 255, 0.015);
         }
 
         .divider {
             width: 100px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-            margin: 40px auto;
+
+            margin: 45px auto;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--accent-red),
+                    transparent
+                );
+        }
+
+        .closing {
+            margin-bottom: 10px;
+
+            color: var(--text-muted);
+
+            font-size: 1.05em;
         }
 
         .signature {
-            font-family: 'Brush Script MT', cursive;
+            margin-top: 10px;
+
             color: var(--signature-gold);
+
+            font-family: 'Brush Script MT', cursive;
             font-size: 2.5em;
-            margin-top: 30px;
-            text-shadow: 0 0 10px rgba(255, 193, 112, 0.5);
+
+            text-shadow:
+                0 0 10px rgba(255, 193, 112, 0.5);
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
             .card {
                 padding: 40px 25px;
             }
+
             h1 {
                 font-size: 2.1em;
             }
+
             p {
-                font-size: 1.1em;
+                font-size: 1.08em;
+                line-height: 1.9;
             }
+
+            .personal-note {
+                font-size: 1.05em;
+                line-height: 1.9;
+            }
+
             .signature {
                 font-size: 2em;
             }
         }
     </style>
 </head>
+
 <body>
+
     <div class="card">
-        <div class="heart-container">
-        </div>
+
         <h1>To the Most Extraordinary Girl</h1>
 
-        <p>
-            You are an absolutely extraordinary young woman. It’s honestly so random how we crossed paths, and it feels strange yet amazing discovering these new facets of you because I truly never imagined you were like this. You are the total polar opposite of everything people say—infinitely more genuine, sweeter, and far more incredible than I could have ever pictured.
-            Even though we’ve barely started getting to know each other, I want to tell you that you’re incredibly random; I never imagined discovering such curious yet amazing sides of you.        </p>
+        <!-- INTRODUCTION -->
+
+        <p class="intro">
+            You are, honestly, one of the most unexpected people I’ve had the chance to meet.
+            It still makes me smile a little when I think about how randomly our paths crossed,
+            because I never imagined that something so ordinary could lead to discovering someone
+            as interesting as you.
+            <br><br>
+
+            What makes it even more special is that getting to know you has been nothing like I
+            expected. Little by little, I’ve discovered your sense of humor, your curiosity,
+            your way of thinking, and all those wonderfully random moments that somehow make you
+            even more memorable.
+            <br><br>
+
+            And perhaps my favorite part is that none of it feels forced. There’s no need to
+            figure everything out at once. I simply enjoy discovering those little pieces of
+            who you are, one conversation at a time.
+        </p>
+
+
+        <!-- ADMIRATION -->
 
         <p>
-            Never doubt yourself, especially when it comes to your medical career. I want you to have the absolute certainty that you are going to be a brilliant <span class="doctor-mention">doctor</span>. 
-            No matter how hard things get or how heavy the road feels, please don't ever give up; your dedication and heart are destined to change lives.
+            There is also something I genuinely admire about you: you are so much more than the
+            version of you that people might describe from the outside.
+            <br><br>
+
+            You are warmer, kinder, sweeter, and far more genuine than I could have imagined.
+            You have this wonderfully unpredictable side that can make even the simplest
+            conversation unexpectedly fun, but underneath that randomness there is also a
+            thoughtful and caring person that is really easy to appreciate once you take the
+            time to notice it.
+            <br><br>
+
+            We’ve only recently started getting to know each other, so I know there is still
+            plenty I haven’t discovered yet. And honestly, I think that’s a good thing.
+            Some people are simply better discovered slowly, without rushing the process.
         </p>
-        
+
+
+        <!-- FUTURE / MEDICINE -->
+
+        <p>
+            And then there is the path you’ve chosen for yourself.
+            <br><br>
+
+            Never doubt yourself when it comes to becoming an incredible
+            <span class="doctor-mention">doctor</span>.
+            I hope you remember that you are capable of much more than you sometimes give
+            yourself credit for.
+            <br><br>
+
+            I know medicine will ask a lot from you. There will be long days, difficult exams,
+            moments of exhaustion, and probably a few occasions when you’ll wonder whether all
+            the effort is worth it.
+            <br><br>
+
+            When those moments come, I hope you remember why you started.
+            Not simply because you want a title, but because behind the profession there is
+            something much more meaningful: the opportunity to help people, to make someone
+            feel understood, and to be there during moments that may matter enormously in
+            another person's life.
+            <br><br>
+
+            Knowledge will make you a good doctor. Experience will make you a better one.
+            But empathy, patience, and the way you make people feel cared for are the things
+            that can make you truly unforgettable.
+            <br><br>
+
+            And from the little I’ve been able to discover about you, I believe you already
+            carry some of those qualities with you.
+        </p>
+
+
+        <!-- SUPPORT -->
+
+        <p>
+            So keep learning. Keep being curious. Keep laughing at the random things that make
+            you, well... you.
+            <br><br>
+
+            Don’t let one difficult day convince you that you are not capable of reaching the
+            future you’re working so hard for. A difficult moment is just that — a moment.
+            It doesn’t get to define your ability, your worth, or everything you are capable
+            of becoming.
+            <br><br>
+
+            I hope that one day, when you finally look back at this part of your life, you’ll
+            realize that every late night, every challenge, every doubt, and every little
+            victory was quietly shaping the doctor you were meant to become.
+        </p>
+
+
+        <!-- LILIES -->
+
         <p class="personal-note">
-            I wanted to send you that detail with the lilies since last year as a way to thank you. It’s honestly so random how we crossed paths, and it feels strange yet amazing discovering these new facets of you because I truly never imagined you were like this. You are the total polar opposite of everything people say—infinitely more genuine, sweeter, and far more incredible than I could have ever pictured.
+
+            There is one little detail I wanted to give you long before any of this.
+            I had wanted to send you the lilies since last year, simply as a small way of saying
+            thank you.
+            <br><br>
+
+            Back then, I didn't really know what the future held, nor did I know if we’d end up talking, keeping a random TikTok streak going, or—better yet—getting to know so many different sides of you. 
+            It was simply a small gesture that felt right.
+            <br><br>
+
+            And now, looking back, it seems strange to me—sending you that bouquet as a surprise—because I had asked you about your favorite roses or flowers last year; it was something I’d planned but never actually followed through on because I felt a bit awkward about it.
+            Just so you know—just to clarify.
+            <br><br>
+
+            Anyway—this is turning into a novel—sometimes the most pleasant surprises are the ones you never planned.
+            And, in a very unexpected way, meeting you has been one of them.
         </p>
+
+
 
         <div class="divider"></div>
-        
-        <p>With deepest admiration and my unending support,</p>
-        <div class="signature">M.V</div> 
+
+        <p class="closing">
+            With deepest admiration, genuine affection, and my unending support,
+        </p>
+
+        <div class="signature">
+            M.V
+        </div>
+
     </div>
+
 </body>
 </html>
+```
